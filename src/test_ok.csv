@@ -1,0 +1,6 @@
+timestamp,level,source,message
+2026-10-24T10:00:00Z,INFO,auth,user logged in
+2026-10-24T10:05:00Z,ERROR,database,connection timeout
+2026-10-24T10:10:00Z,DEBUG,auth,checking session
+2026-10-24T10:15:00Z,CRITICAL,gateway,out of memory
+2026-10-24T10:20:00Z,ERROR,database,query failed

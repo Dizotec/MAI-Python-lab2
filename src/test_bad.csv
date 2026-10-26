@@ -1,0 +1,7 @@
+timestamp,level,source,message
+2026-10-24T10:00:00Z,INFO,auth,все хорошо
+2026-10-24,ERROR,auth,битая дата (нет времени)
+2026-10-24T10:05:00Z,BADLEVEL,auth,неверный уровень
+2026-10-24T10:10:00Z,ERROR,,пустой источник
+2026-10-24T10:15:00Z,CRITICAL,gateway,
+,ERROR,database,пропущена дата

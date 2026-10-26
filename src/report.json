@@ -1,0 +1,15 @@
+{
+    "total_events": 5,
+    "levels": {
+        "INFO": 1,
+        "ERROR": 2,
+        "DEBUG": 1,
+        "CRITICAL": 1
+    },
+    "top_5_error_sources": {
+        "database": 2,
+        "gateway": 1
+    },
+    "first_timestamp": "2026-10-24T10:00:00Z",
+    "last_timestamp": "2026-10-24T10:20:00Z"
+}

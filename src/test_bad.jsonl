@@ -1,0 +1,6 @@
+{"timestamp": "2026-10-24T10:00:00Z", "level": "INFO", "source": "auth", "message": "ok"}
+{"timestamp": "2026-10-24", "level": "INFO", "source": "auth", "message": "битая дата"}
+{"timestamp": "2026-10-24T10:05:00Z", "level": "INVALID", "source": "auth", "message": "плохой уровень"}
+{"timestamp": "2026-10-24T10:10:00Z", "level": "ERROR", "source": "  ", "message": "пустой source"}
+{"timestamp": "2026-10-24T10:15:00Z", "level": "ERROR", "source": "database", "message": "ok"}
+сломанный json { text
