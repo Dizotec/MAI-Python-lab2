@@ -1,7 +1,9 @@
-import json
 import csv
+import json
+
 from streamstats import models
 from streamstats.errors import InvalidEventError
+
 
 def stream_events(files, skip_invalid_flag):
     for file in files:

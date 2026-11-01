@@ -5,12 +5,16 @@ def statistics(events, skip_invalid_flag):
     f_timestamp = None
     l_timestamp = None
     skipped_count = 0
-
+    source_count = {}
     for i in events:
         if i == 'SKIP':
             skipped_count += 1
             continue
 
+        if i.source not in source_count:
+            source_count[i.source] = 1
+        else:
+            source_count[i.source] +=1
 
         event_count += 1
 
@@ -27,9 +31,12 @@ def statistics(events, skip_invalid_flag):
                 errors_source_count[i.source] = 1
 
 
-        if f_timestamp is None:
+        if f_timestamp is None or f_timestamp > i.timestamp:
             f_timestamp = i.timestamp
-        l_timestamp = i.timestamp
+        if l_timestamp is None or l_timestamp < i.timestamp:
+            l_timestamp= i.timestamp
+
+
 
     error_items = list(errors_source_count.items())
 
@@ -44,5 +51,6 @@ def statistics(events, skip_invalid_flag):
         "top_5_sources": top_5_errors,
         "first_timestamp": f_timestamp,
         "last_timestamp": l_timestamp,
-        "skipped_count": skipped_count
+        "skipped_count": skipped_count,
+        "source_counts":source_count
     }

@@ -1,9 +1,12 @@
 from dataclasses import dataclass
 from datetime import datetime
+
 from streamstats.errors import InvalidEventError, InvalidTimestampError
+
+
 @dataclass
 class Event:
-    timestamp:str
+    timestamp:datetime
     level:str
     source:str
     message:str
@@ -22,12 +25,13 @@ def validation(data:dict )->Event:
     if data["level"] not in allowed:
         raise InvalidEventError(f"Invalid log level: {data['level']}")
     try:
-        datetime.fromisoformat(data["timestamp"].replace("Z", "+00:00")) # Нулевое смещение
+
+        time = datetime.fromisoformat(data["timestamp"]) # Нулевое смещение
     except ValueError:
         raise InvalidTimestampError(f"Invalid timestamp format: {data['timestamp']}")
 
     return Event(
-        timestamp=data["timestamp"],
+        timestamp=time,
         level=data["level"],
         source=data["source"],
         message=data["message"]

@@ -1,6 +1,8 @@
 import sys
-from streamstats import analysis, parsers,report
+
+from streamstats import analysis, parsers, report
 from streamstats.errors import StreamStatsError
+
 
 def main():
     args = sys.argv[1:]
