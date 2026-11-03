@@ -1,17 +1,42 @@
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 class StreamStatsError(Exception):
-    def __init__(self, message, file=None, line=None):
+    def __init__(
+        self, message: str, file: str | None = None, line: int | None = None
+    ) -> None:
         super().__init__(message)
         self.file = file
         self.line = line
 
+
 class UnsupportedFormatError(StreamStatsError):
-    """Вызывается, если указан формат, отличный от csv или jsonl."""
+    pass
+
 
 class InvalidEventError(StreamStatsError):
-    """Вызывается при отсутствии обязательных полей или пустом source."""
+    pass
+
 
 class InvalidTimestampError(StreamStatsError):
-    """Вызывается, если временная метка не соответствует ISO 8601."""
+    pass
+
 
 class CLIConfigurationError(StreamStatsError):
-    """Вызывается при ошибках в переданных аргументах командной строки."""
+    pass
+
+
+def handle_record_error(
+    e: StreamStatsError, file: str, line: int, skip_invalid_flag: bool
+) -> str:
+    e.file = file
+    e.line = line
+
+    if not skip_invalid_flag:
+        raise e
+
+    logger.warning("%s:%d: %s", file, line, e)
+
+    return "SKIP"

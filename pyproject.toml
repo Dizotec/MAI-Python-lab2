@@ -10,3 +10,13 @@ dependencies = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.coverage.run]
+source = ["streamstats"]
+branch = true
+patch = ["subprocess"]
+
+[tool.coverage.report]
+fail_under = 81
+show_missing = true
+precision = 2
